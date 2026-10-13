@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Country Royale Studio</title>
+<meta name="description" content="Post the latest Country Royale battles to your TikTok.">
+<link rel="icon" href="../logo.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800&family=Onest:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="studio.css">
+<script src="studio-config.js"></script>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="./"><img src="../logo.png" alt="" width="36" height="36"><span>Country Royale <b>Studio</b></span></a>
+  <div id="who" class="who" hidden>
+    <img id="avatar" alt="" width="32" height="32">
+    <span>Posting as <b id="nick"></b></span>
+    <button id="signout" class="link" type="button">Sign out</button>
+  </div>
+</header>
+
+<main id="app">
+  <section id="signedOut" class="intro" hidden>
+    <h1>Post the battle.<br>Back your country.</h1>
+    <p>Pick a Country Royale battle, check the video and caption, choose who can see it, and post it to your TikTok.</p>
+    <button id="signin" class="btn primary" type="button">Continue with TikTok</button>
+    <p class="fine">We only post the video you choose, when you press Post. <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></p>
+  </section>
+
+  <section id="signedIn" hidden>
+    <nav class="tabs" role="tablist">
+      <button class="tab" role="tab" data-tab="ready" aria-selected="true" type="button">Ready to post <span id="nReady">0</span></button>
+      <button class="tab" role="tab" data-tab="posted" aria-selected="false" type="button">Posted <span id="nPosted">0</span></button>
+    </nav>
+    <p id="limits" class="fine" hidden></p>
+    <div id="list" class="list"></div>
+    <p id="empty" class="empty" hidden></p>
+  </section>
+
+  <p id="msg" class="msg" role="status" hidden></p>
+</main>
+
+<template id="card">
+  <article class="card">
+    <div class="media">
+      <video preload="none" playsinline controls></video>
+    </div>
+    <div class="body">
+      <div class="head">
+        <h2 class="title"></h2>
+        <p class="meta"></p>
+      </div>
+      <label class="field">
+        <span class="label">Caption</span>
+        <textarea class="caption" rows="6" maxlength="2200"></textarea>
+        <span class="count"></span>
+      </label>
+      <label class="field">
+        <span class="label">Who can see this video</span>
+        <select class="privacy" required>
+          <option value="" disabled selected>Choose who can see it</option>
+        </select>
+      </label>
+      <fieldset class="field">
+        <legend class="label">Allow users to</legend>
+        <div class="checks">
+          <label class="check"><input type="checkbox" class="allow" data-k="comment"> Comment</label>
+          <label class="check"><input type="checkbox" class="allow" data-k="duet"> Duet</label>
+          <label class="check"><input type="checkbox" class="allow" data-k="stitch"> Stitch</label>
+        </div>
+        <p class="hint off-note" hidden></p>
+      </fieldset>
+      <fieldset class="field disclose">
+        <label class="switch"><input type="checkbox" class="dc"> <span>Disclose video content</span></label>
+        <p class="hint">Turn on to disclose that this video promotes goods or services in exchange for something of value. Your video could promote yourself, a third party, or both.</p>
+        <div class="dc-opts" hidden>
+          <label class="check block"><input type="checkbox" class="dc-own"> <span><b>Your brand</b><br><small>You are promoting yourself or your own business. This video will be classified as Brand Organic.</small></span></label>
+          <label class="check block"><input type="checkbox" class="dc-paid"> <span><b>Branded content</b><br><small>You are promoting another brand or a third party. This video will be classified as Branded Content.</small></span></label>
+          <p class="hint dc-label"></p>
+        </div>
+      </fieldset>
+      <p class="consent"></p>
+      <p class="problem" hidden></p>
+      <button class="btn primary post" type="button" disabled>Post to TikTok</button>
+      <p class="result" role="status" hidden></p>
+    </div>
+  </article>
+</template>
+
+<script src="studio.js"></script>
+</body>
+</html>
